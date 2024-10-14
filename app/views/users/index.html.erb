@@ -1,0 +1,38 @@
+<h1>Dashboard</h1>
+
+
+<%= link_to 'New Creation', new_user_path %>
+
+    <style type="text/css">
+           table, th, td{
+             border: 1px solid ;
+           }
+    </style>
+
+<table style="width: 100%">
+    <thead>
+    <tr>
+     <th>name</th>
+     <th>game</th>
+     <th>update</th> 
+     <th>show</th> 
+     <th>gossips</th> 
+     <th>illuminati</th> 
+    </tr>
+    </thead>
+
+    <tbody>
+  <% @user.each do |human| %>
+    <tr>
+       <td><%=link_to human.name, human %></td>
+       <td><%= human.game %></td>
+       <td><%= link_to 'edit', edit_user_path(human.id) %></td>
+       <td><%= link_to 'show', user_path(human.id) %></td>
+       <td><%= link_to 'gossips', user_comment_path(human.id,human.id) %></td>
+       <td><%= link_to 'daestro', user_path(human.id), data: {  
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?" } %></td>
+   </tr>
+     <% end %>
+    </tbody>
+ </table>   

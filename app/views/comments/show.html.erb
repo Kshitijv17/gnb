@@ -1,0 +1,18 @@
+<h1><%= @user.name %></h1>
+
+<p style="color:black"><%= @user.game %></p>
+
+
+  <% @user.comments.each do |comment| %>
+    <ul>
+      <%= comment.commenter %>
+      <%= comment.aunty %>
+<%= link_to 'daestro', [comment.user, comment], data: {  
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?" } %>
+    </ul>
+  <% end %>
+</ul>
+
+<p></p>
+<%= link_to 'Back to Dashboard', root_path %>

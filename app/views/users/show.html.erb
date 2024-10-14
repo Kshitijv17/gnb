@@ -1,0 +1,39 @@
+<h1><%= @user.name %></h1>
+
+<p style="color:black"><%= @user.game %></p>
+
+
+<ul>
+  <li><%= link_to "Edit", edit_user_path(@user) %></li>
+</ul>
+
+<%= link_to 'Back to Dashboard', root_path %>
+
+
+<h2>Comments</h2>
+<%= form_with(model: [@user, @comment], local: true) do |form| %>
+  <div>
+    <%= form.label :commenter %>
+    <%= form.text_area :commenter %>
+  </div>
+  <div>
+    <%= form.label :aunty %>
+    <%= form.text_area :aunty %>
+  </div>
+  <div>
+    <%= form.submit 'Add Comment' %>
+  </div>
+<% end %>
+
+<ul>
+  <% @user.comments.each do |comment| %>
+    <li>
+      <%= comment.commenter %>
+      <%= comment.aunty %>
+      <%= link_to "Daestro", [comment.user, comment], data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>    </li>
+  <% end %>
+</ul>
+

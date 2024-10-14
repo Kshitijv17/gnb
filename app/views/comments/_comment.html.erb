@@ -1,0 +1,28 @@
+
+<h2>Comments</h2>
+<% @comment.comments.each do |japan| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= japan.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= japan.aunty %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= #form_with model: [ @user, @user.comments.build ] do |form| %>
+  <p>
+    <%=# form.label :commenter %><br>
+    <%= #form.text_field :commenter %>
+  </p>
+  <p>
+    <%= #form.label :aunty %><br>
+    <%=# form.text_area :aunty %>
+  </p>
+  <p>
+    <%=# form.submit %>
+  </p>
+<% end %>
